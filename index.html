@@ -16,7 +16,8 @@
       --bg-color: #ffffff;
       --text-color: #222222;
       --accent-color: #000000;
-      --link-color: #0066cc; /* 파랑으로 변경 */
+      --link-color: #0066cc;       /* 모든 링크 파랑 */
+      --link-hover: #0b5bd3;       /* 호버 파랑 */
       --border-color: #dddddd;
       --muted: #777777;
     }
@@ -25,11 +26,13 @@
         --bg-color: #1a1a1a;
         --text-color: #eeeeee;
         --accent-color: #ffffff;
-        --link-color: #66aaff; /* 다크 모드에서도 파랑 */
+        --link-color: #8ab4f8;
+        --link-hover: #aecbfa;
         --border-color: #444444;
         --muted: #aaaaaa;
       }
     }
+
     html, body { height: 100%; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
@@ -45,38 +48,65 @@
       text-align: center;
     }
     .container { max-width: 680px; width: 100%; }
+
     img.profile-pic {
       width: 130px; height: 130px; object-fit: cover; border-radius: 50%;
       margin: 0 auto 1rem; display: block; box-shadow: 0 2px 6px rgba(0,0,0,.1);
     }
+
     h1 { font-size: 2rem; margin: .2rem 0; font-weight: 600; }
     .subtitle { font-size: 1rem; color: var(--accent-color); margin-bottom: 1.5rem; }
+
+    /* 링크 전역 스타일 */
     a { color: var(--link-color); text-decoration: none; }
-    a:hover { color: var(--link-color); text-decoration: underline; }
+    a:hover, a:focus { color: var(--link-hover); text-decoration: underline; }
+
     .links { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
     .links a {
       padding: .35rem .6rem; border: 1px solid var(--border-color); border-radius: 6px;
       font-weight: 500; transition: background-color .2s ease;
     }
     .links a:hover { background-color: var(--border-color); }
-    .news { margin: 1.25rem auto 0; max-width: 420px; width: 100%; text-align: left; }
+
+    /* ===== news 레이아웃 정렬 개선 ===== */
+    .news { margin: 1.25rem auto 0; max-width: 520px; width: 100%; text-align: left; }
     .news h2 { font-size: 1.1rem; color: var(--accent-color); margin-bottom: .8rem; }
-    .news-item { display: flex; gap: .6rem; margin-bottom: .6rem; font-size: .95rem; }
-    .news-date { color: var(--accent-color); width: 120px; flex-shrink: 0; text-align: right; }
+
+    .news-item {
+      display: flex;
+      align-items: flex-start;   /* 윗줄 기준 정렬 */
+      gap: 1rem;                 /* 날짜-문장 간격 */
+      margin-bottom: .6rem;
+      font-size: .95rem;
+    }
+    .news-date {
+      color: var(--accent-color);
+      width: 120px;              /* 날짜 열 고정폭 */
+      flex-shrink: 0;
+      text-align: right;         /* 날짜 오른쪽 정렬 */
+    }
+    .news-item span:last-child { flex: 1; } /* 문장 영역이 나머지 폭 차지 */
+
     details.more-news { margin-top: .6rem; }
     summary.toggle { font-size: .95rem; color: var(--link-color); cursor: pointer; }
-    summary.toggle:hover { color: var(--link-color); }
+    summary.toggle:hover { color: var(--link-hover); }
+
     .tmi { margin-top: 1.4rem; font-size: .9rem; color: var(--muted); font-style: italic; text-align: center; }
     footer { margin-top: 1.5rem; font-size: .85rem; color: var(--muted); text-align: center; }
-    @media (max-width: 420px) { .news-date { width: 78px; } }
+
+    @media (max-width: 480px) {
+      .news { max-width: 100%; }
+      .news-date { width: 110px; text-align: right; }
+    }
   </style>
 </head>
 <body>
   <main class="container">
     <img src="img/namyeon.jpg" alt="Portrait of Namyeon Lee" class="profile-pic" />
     <h1>Namyeon Lee</h1>
+
     <div class="subtitle">
-      Assistant Professor of Public Relations at 
+      Assistant Professor of Public Relations at
       <a href="https://www.uncp.edu/" target="_blank" rel="noopener">UNCP</a>
     </div>
 
@@ -88,23 +118,28 @@
 
     <section class="news">
       <h2>news</h2>
+
       <div class="news-item">
-        <span class="news-date">Oct 10-11, 2025</span>
-        <span>panelist at the <a href="https://carolinascommunication.org/" target="_blank" rel="noopener">CCA</a> in Raleigh, NC</span>
+        <span class="news-date"><time datetime="2025-10-10">Oct 10–11, 2025</time></span>
+        <span>Panelist at the <a href="https://carolinascommunication.org/" target="_blank" rel="noopener">CCA Conference</a> in Raleigh, NC</span>
       </div>
+
       <div class="news-item">
-        <span class="news-date">Aug 18, 2025</span>
-        <span>first day of the fall semester 🍁</span>
+        <span class="news-date"><time datetime="2025-08-18">Aug 18, 2025</time></span>
+        <span>First day of the fall semester 🍁</span>
       </div>
+
       <details class="more-news">
         <summary class="toggle">past updates</summary>
+
         <div class="news-item">
-          <span class="news-date">Aug 8, 2025</span>
-          <span>launched the new webpage 🎉</span>
+          <span class="news-date"><time datetime="2025-08-08">Aug 8, 2025</time></span>
+          <span>Launched the new webpage 🎉</span>
         </div>
+
         <div class="news-item">
-          <span class="news-date">Jun 12-16, 2025</span>
-          <span>presented at the <a href="https://www.icahdq.org/mpage/ICA25" target="_blank" rel="noopener">ICA</a> in Denver, CO </span>
+          <span class="news-date"><time datetime="2025-06-12">Jun 12–16, 2025</time></span>
+          <span>Presented at the <a href="https://www.icahdq.org/mpage/ICA25" target="_blank" rel="noopener">ICA</a> in Denver, CO</span>
         </div>
       </details>
     </section>
