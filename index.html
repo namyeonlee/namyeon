@@ -16,7 +16,7 @@
       --bg-color: #ffffff;
       --text-color: #222222;
       --accent-color: #000000;
-      --link-color: #000000;
+      --link-color: #0066cc; /* 파랑으로 변경 */
       --border-color: #dddddd;
       --muted: #777777;
     }
@@ -25,7 +25,7 @@
         --bg-color: #1a1a1a;
         --text-color: #eeeeee;
         --accent-color: #ffffff;
-        --link-color: #ffffff;
+        --link-color: #66aaff; /* 다크 모드에서도 파랑 */
         --border-color: #444444;
         --muted: #aaaaaa;
       }
@@ -52,7 +52,7 @@
     h1 { font-size: 2rem; margin: .2rem 0; font-weight: 600; }
     .subtitle { font-size: 1rem; color: var(--accent-color); margin-bottom: 1.5rem; }
     a { color: var(--link-color); text-decoration: none; }
-    a:hover { color: var(--accent-color); text-decoration: underline; }
+    a:hover { color: var(--link-color); text-decoration: underline; }
     .links { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
     .links a {
       padding: .35rem .6rem; border: 1px solid var(--border-color); border-radius: 6px;
@@ -65,33 +65,20 @@
     .news-date { color: var(--accent-color); width: 90px; flex-shrink: 0; text-align: left; }
     details.more-news { margin-top: .6rem; }
     summary.toggle { font-size: .95rem; color: var(--link-color); cursor: pointer; }
-    summary.toggle:hover { color: var(--accent-color); }
+    summary.toggle:hover { color: var(--link-color); }
     .tmi { margin-top: 1.4rem; font-size: .9rem; color: var(--muted); font-style: italic; text-align: center; }
     footer { margin-top: 1.5rem; font-size: .85rem; color: var(--muted); text-align: center; }
     @media (max-width: 420px) { .news-date { width: 78px; } }
-
-.subtitle a {
-  color: #0066cc;
-  text-decoration: none;
-}
-
-.subtitle a:hover {
-  text-decoration: underline;
-}
-
-.subtitle {
-  position: relative;
-  z-index: 1;
-}
-
-    
   </style>
 </head>
 <body>
   <main class="container">
     <img src="img/namyeon.jpg" alt="Portrait of Namyeon Lee" class="profile-pic" />
     <h1>Namyeon Lee</h1>
-    <div class="subtitle">Assistant Professor of Public Relations at <a href="https://www.uncp.edu/" target="_blank" rel="noopener">UNCP</a></div>
+    <div class="subtitle">
+      Assistant Professor of Public Relations at 
+      <a href="https://www.uncp.edu/" target="_blank" rel="noopener">UNCP</a>
+    </div>
 
     <nav class="links">
       <a href="mailto:nlee@uncp.edu">Email</a>
@@ -101,14 +88,24 @@
 
     <section class="news">
       <h2>news</h2>
-      <div class="news-item"><span class="news-date">10-10-25</span>
-  <span>panelist at the <a href="https://carolinascommunication.org/" target="_blank" rel="noopener">CCA</a> in Raleigh, NC</span></div>
-      
-      <div class="news-item"><span class="news-date">08-18-25</span><span>first day of the fall semester</span></div>
+      <div class="news-item">
+        <span class="news-date">10-10-25</span>
+        <span>panelist at the <a href="https://carolinascommunication.org/" target="_blank" rel="noopener">CCA</a> in Raleigh, NC</span>
+      </div>
+      <div class="news-item">
+        <span class="news-date">08-18-25</span>
+        <span>first day of the fall semester 🍁</span>
+      </div>
       <details class="more-news">
-        <summary class="toggle">More</summary>
-        <div class="news-item"><span class="news-date">08-08-25</span><span>launched the new webpage 🎉</span></div>
-         <div class="news-item"><span class="news-date">06-12-25</span><span>presented at the ICA</span></div>
+        <summary class="toggle">Past updates</summary>
+        <div class="news-item">
+          <span class="news-date">08-08-25</span>
+          <span>launched the new webpage 🎉</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">06-12-25</span>
+          <span>presented at the ICA</span>
+        </div>
       </details>
     </section>
 
