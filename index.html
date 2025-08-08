@@ -117,7 +117,7 @@
     <nav class="links" aria-label="Primary">
       <a href="Namyeon_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
 
-      <!-- 아직 없으니 비활성으루다가 -->
+      <!-- 아직 없으니 비활성. 나중에 href만 넣으면 활성화됨 -->
       <a class="disabled" aria-disabled="true" title="Coming soon">Teaching</a>
       <a class="disabled" aria-disabled="true" title="Coming soon">Research</a>
 
@@ -156,6 +156,11 @@
     <footer>&copy; <span id="year"></span> Namyeon Lee</footer>
   </main>
 
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const tmis = [' '];
+    const tmiBox = document.getElementById('tmi-box');
+    tmiBox.textContent = `🍅 ${tmis[Math.floor(Math.random() * tmis.length)]}`;
+  </script>
 </body>
 </html>
