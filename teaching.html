@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <!-- ▼ 노치/모바일 툴바 반영 -->
+  <!-- 노치/모바일 툴바 반영 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Teaching - Namyeon Lee</title>
   <meta name="description" content="Teaching - Namyeon Lee" />
@@ -25,32 +25,22 @@
     }
 
     html, body { height: 100%; }
-    /* 기본(데스크톱): 세로 중앙정렬 유지 */
+
+    /* ✅ 데스크톱/모바일 공통: 중앙정렬 제거 + 상단 여백 유연/안전 */
     body{
       font-family:'Inter',system-ui,sans-serif;
       background:var(--bg-color); color:var(--text-color);
       margin:0;
-      padding: 2rem 1rem 2rem;
-      display:flex; align-items:center; justify-content:center;
-      min-height:100vh; /* 데스크톱에선 OK */
+      padding: calc(clamp(2rem, 6vh, 7rem) + env(safe-area-inset-top, 0px)) 1rem 2rem;
+      display:block;                 /* 중앙정렬(플렉스) 제거 */
+      min-height:auto;               /* 100vh 제거 */
       text-align:center; box-sizing:border-box;
     }
-    /* 모바일 툴바/노치 대응: 100svh + 수직 중앙정렬 해제 + 상단 패딩 크게 */
+
+    /* 100svh 지원 브라우저에서 모바일 높이 안정화 (선택 보정) */
     @supports (height: 100svh){
       @media (max-width: 768px){
-        body{
-          min-height:100svh;
-          display:block;                 /* 중앙정렬 해제 */
-          padding-top: calc(7rem + env(safe-area-inset-top, 0px));
-        }
-      }
-    }
-    /* 100svh 미지원 브라우저용 폴백 */
-    @media (max-width: 768px){
-      body{
-        display:block;
-        min-height:100vh;
-        padding-top: calc(7rem + env(safe-area-inset-top, 0px));
+        body{ min-height:100svh; }
       }
     }
 
