@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- ▼ 노치/모바일 툴바 반영 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Teaching - Namyeon Lee</title>
   <meta name="description" content="Teaching - Namyeon Lee" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
@@ -23,16 +24,37 @@
       }
     }
 
-    html,body{height:100%}
+    html, body { height: 100%; }
+    /* 기본(데스크톱): 세로 중앙정렬 유지 */
     body{
       font-family:'Inter',system-ui,sans-serif;
       background:var(--bg-color); color:var(--text-color);
       margin:0;
-      padding: calc(30rem + env(safe-area-inset-top, 0px)) 1rem 2rem; /* 상단 여백 넉넉 */
+      padding: 2rem 1rem 2rem;
       display:flex; align-items:center; justify-content:center;
-      min-height:100vh; text-align:center; box-sizing:border-box;
+      min-height:100vh; /* 데스크톱에선 OK */
+      text-align:center; box-sizing:border-box;
     }
-    .container{max-width:680px; width:100%}
+    /* 모바일 툴바/노치 대응: 100svh + 수직 중앙정렬 해제 + 상단 패딩 크게 */
+    @supports (height: 100svh){
+      @media (max-width: 768px){
+        body{
+          min-height:100svh;
+          display:block;                 /* 중앙정렬 해제 */
+          padding-top: calc(7rem + env(safe-area-inset-top, 0px));
+        }
+      }
+    }
+    /* 100svh 미지원 브라우저용 폴백 */
+    @media (max-width: 768px){
+      body{
+        display:block;
+        min-height:100vh;
+        padding-top: calc(7rem + env(safe-area-inset-top, 0px));
+      }
+    }
+
+    .container{max-width:680px; width:100%; margin:0 auto;}
 
     h1{font-size:2rem; margin:.6rem 0; font-weight:600}
     .subtitle{font-size:1rem; color:var(--accent-color); margin-bottom:1.5rem}
@@ -60,7 +82,9 @@
 <body>
   <main class="container">
     <h1>Teaching</h1>
-
+    <div class="subtitle">
+      Assistant Professor of Public Relations at
+      <a href="https://www.uncp.edu/" target="_blank" rel="noopener">UNCP</a>
     </div>
 
     <!-- 상단 탭 -->
@@ -74,7 +98,7 @@
 
     <!-- Philosophy -->
     <section class="section" aria-labelledby="philosophy">
-    
+      <h2 id="philosophy">Teaching Philosophy</h2>
       <blockquote>
         “You teach me, I forget. You show me, I remember. You involve me, I understand.” — E.O. Wilson
       </blockquote>
