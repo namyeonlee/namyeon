@@ -27,13 +27,16 @@
     body{
       font-family:'Inter',system-ui,sans-serif;
       background:var(--bg-color); color:var(--text-color);
-      margin:0; padding:2rem 1rem;
+      margin:0;
+      /* ▼ 여백 넉넉히  */
+      padding: calc(2.25rem + env(safe-area-inset-top, 0px)) 1rem 2rem;
       display:flex; align-items:center; justify-content:center;
       min-height:100vh; text-align:center;
+      box-sizing: border-box;
     }
     .container{max-width:680px; width:100%}
 
-    h1{font-size:2rem; margin:.2rem 0; font-weight:600}
+    h1{font-size:2rem; margin:.4rem 0; font-weight:600} /* ↑ 헤더 약간 아래로 */
     .subtitle{font-size:1rem; color:var(--accent-color); margin-bottom:1.5rem}
 
     /* 상단 탭 */
@@ -51,7 +54,7 @@
     blockquote{
       margin:0 0 .6rem; padding:.75rem 1rem;
       border-left:3px solid var(--border-color);
-      background: #fafafa;
+      background:#fafafa;
     }
     @media (prefers-color-scheme: dark){
       blockquote{background:#222}
