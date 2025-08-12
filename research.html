@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Research - Namyeon Lee</title>
-  <meta name="description" content="Research" />
+  <meta name="description" content="Research - Namyeon Lee" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" href="img/favicon.ico" />
   <style>
@@ -28,7 +28,7 @@
       font-family:'Inter',system-ui,sans-serif;
       background:var(--bg-color); color:var(--text-color);
       margin:0;
-      /* top/bottom padding with safe-area support */
+      /* 위/아래 여백 + 노치 대응 */
       padding: calc(clamp(2rem, 6vh, 7rem) + env(safe-area-inset-top, 0px))
                1rem
                calc(3.5rem + env(safe-area-inset-bottom, 0px));
@@ -40,7 +40,7 @@
     h1{font-size:2rem; margin:.6rem 0; font-weight:600}
     .subtitle{font-size:1rem; color:var(--accent-color); margin-bottom:1.5rem}
 
-    /* nav tabs (same as other pages) */
+    /* 상단 탭 */
     a{color:var(--link-color); text-decoration:none}
     a:hover,a:focus{color:var(--link-hover); text-decoration:underline}
     .links{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-bottom:1.5rem}
@@ -48,13 +48,25 @@
     .links a:hover{background-color:var(--border-color)}
     .links a.disabled{pointer-events:none; cursor:default; opacity:.55; border-style:dashed; text-decoration:none}
 
-    /* page sections + cards (match Teaching) */
+    /* 섹션 & 카드 (Teaching과 톤 맞춤) */
     .section{margin:1.25rem auto 0; max-width:520px; width:100%; text-align:left}
     .section h2{font-size:1.1rem; color:var(--accent-color); margin:.2rem 0 .8rem}
     .lead{margin:.2rem 0 1rem; line-height:1.6}
-    .card{border:1px solid var(--border-color); border-radius:8px; padding:1rem; margin-bottom:.8rem}
-    .meta{color:var(--muted); font-size:.9rem; margin:.2rem 0 .4rem}
-    ul{margin:.3rem 0 0 1.1rem}
+
+    .card{border:1px solid var(--border-color); border-radius:8px; padding:1rem; margin-bottom:.8rem; background:var(--bg-color)}
+    .meta{color:var(--muted); font-size:.92rem; margin:.2rem 0 0}
+
+    /* Publications 카드에 왼쪽 포인트 라인 */
+    .pub-card{
+      border-left:4px solid var(--link-color);
+      box-shadow:0 1px 3px rgba(0,0,0,.05);
+    }
+    .pub-card p{margin:0}
+    .pub-card em{font-style:italic}
+
+    /* Projects 목록 */
+    .projects li{margin-bottom:.45rem}
+
     .section:last-of-type{margin-bottom:1rem}
     footer{margin-top:1.8rem; font-size:.85rem; color:var(--muted); padding-bottom:.5rem}
   </style>
@@ -62,81 +74,91 @@
 <body>
   <main class="container">
     <h1>Research</h1>
-
+    <div class="subtitle">
+      Assistant Professor of Public Relations at
+      <a href="https://www.uncp.edu/" target="_blank" rel="noopener">UNCP</a>
     </div>
 
-    <!-- top nav -->
+    <!-- 탭 -->
     <nav class="links" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="Namyeon_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
       <a href="teaching.html">Teaching</a>
-      <a href="research.html">Research</a>
+      <a aria-current="page" class="disabled" title="You are here">Research</a>
       <a href="https://scholar.google.com/citations?user=e9AxEE4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
     </nav>
 
-    <!-- overview -->
+    <!-- Overview -->
     <section class="section" aria-labelledby="overview">
+      <h2 id="overview">Overview</h2>
       <p class="lead">
-  I am working on the topic of <strong>health and science communication in digital and emerging media</strong>, 
-  because I want to find out <strong>how different ways of presenting information—such as framing, visuals, or source type—affect audience understanding, trust, and decision-making</strong> 
-  so that I can help others to understand <strong>how to design clearer, more trustworthy messages that improve public engagement with complex or uncertain science and health topics</strong>.
-</p>
-
+        I study how health and science messages shape what people understand, believe, and do—especially when those messages
+        appear on social media, short videos, or other new technologies. My work combines research-based theory with real-world
+        applications, often examining how different message elements—such as message framing, visuals, or the credibility of the
+        source—affect audience responses. I focus on topics that often involve uncertainty, innovation, or sensitive health issues,
+        aiming to create communication strategies that make information clearer, reduce misinformation, and build public trust.
       </p>
     </section>
 
-    <!-- selected publications (card style like Teaching) -->
+    <!-- Selected Publications -->
     <section class="section" aria-labelledby="pubs">
       <h2 id="pubs">Selected Publications</h2>
 
-      <article class="card">
-
-<a href="https://www.tandfonline.com/doi/abs/10.1080/10810730.2024.2339237" target="_blank" rel="noopener"> 
-  <strong>Exploring the strategic use of TikTok for clinical trial recruitment: How audiences’ prior short-form video usage influences persuasive effects</strong> </a>
-        <div class="meta">Lee, N., Hong, Y., Hu, S., Kirkpatrick, C. E., Lee, S., &amp; Hinnant, A. (2024). <em>Journal of Health Communication</em>.</div>
+      <article class="card pub-card">
+        <p>
+          <strong>Lee, N.</strong>, Hong, Y., Hu, S., Kirkpatrick, C. E., Lee, S., &amp; Hinnant, A. (2024).
+          <a href="https://www.tandfonline.com/doi/abs/10.10810730.2024.2339237" target="_blank" rel="noopener">
+            Exploring the strategic use of TikTok for clinical trial recruitment: How audiences’ prior short-form video usage influences persuasive effects
+          </a>.
+          <em>Journal of Health Communication</em>.
+        </p>
       </article>
 
-      <article class="card">
-       <a href="https://jcom.sissa.it/article/pubid/JCOM_2303_2024_A01/" target="_blank" rel="noopener"> 
-        <strong>Effects of message frames and visual cues on cell-cultured meat communication: Sensation seeking as a moderator.</strong></a>
-        <div class="meta">Lee, N., &amp; Lee, S. (2024). <em>Journal of Science Communication</em>.</div>
+      <article class="card pub-card">
+        <p>
+          <strong>Lee, N.</strong>, &amp; Lee, S. (2024).
+          Effects of message frames and visual cues on cell-cultured meat communication: Sensation seeking as a moderator.
+          <em>Journal of Science Communication</em>.
+        </p>
       </article>
 
-      <article class="card">
-       <a href="https://www.sciencedirect.com/science/article/abs/pii/S0264410X2400402X" target="_blank" rel=noopener">
-        <strong>COVID-19 vaccination communication: Effects of vaccine conspiracy beliefs and message framing among Black and White participants.</strong></a>
-        <div class="meta">Lee, N., Hong, Y., Hu, S., Kirkpatrick, C. E., Lee, S., &amp; Hinnant, A. (2024). <em>Vaccine</em>.</div>
+      <article class="card pub-card">
+        <p>
+          <strong>Lee, N.</strong>, Hong, Y., Hu, S., Kirkpatrick, C. E., Lee, S., &amp; Hinnant, A. (2024).
+          COVID-19 vaccination communication: Effects of vaccine conspiracy beliefs and message framing among Black and White participants.
+          <em>Vaccine</em>.
+        </p>
       </article>
     </section>
 
-    <!-- current projects -->
+    <!-- Current Projects -->
     <section class="section" aria-labelledby="projects">
-      <h2 id="projects">Working Projects</h2>
+      <h2 id="projects">Current Projects</h2>
 
       <article class="card">
         <strong>Autonomous Vehicles &amp; Uncertainty</strong>
-        <ul>
+        <ul class="projects">
           <li>Studying how uncertainty framing and message source affect public attitudes and risk perception</li>
         </ul>
       </article>
 
       <article class="card">
         <strong>Physician Warmth &amp; Trust</strong>
-        <ul>
+        <ul class="projects">
           <li>Exploring how a doctor’s warmth influences perceptions of altruism in clinical trial recruitment</li>
         </ul>
       </article>
 
       <article class="card">
         <strong>HIV News Imagery &amp; Audience Bias</strong>
-        <ul>
+        <ul class="projects">
           <li>Investigating how gender representation and prejudice affect responses to HIV news coverage</li>
         </ul>
       </article>
 
       <article class="card">
         <strong>Posthumous AI Voices &amp; Video</strong>
-        <ul>
+        <ul class="projects">
           <li>Examining public trust and ethical concerns around AI-generated recreations of deceased individuals</li>
         </ul>
       </article>
