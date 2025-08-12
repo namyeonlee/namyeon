@@ -2,7 +2,6 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <!-- 노치/모바일 툴바 반영 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Teaching - Namyeon Lee</title>
   <meta name="description" content="Teaching" />
@@ -26,22 +25,18 @@
 
     html, body { height: 100%; }
 
-    /* 데스크톱/모바일 공통: 중앙정렬 제거 + 상단 여백 유연/안전 */
+    /* 상단 여백: PC/모바일 공통 */
     body{
       font-family:'Inter',system-ui,sans-serif;
       background:var(--bg-color); color:var(--text-color);
       margin:0;
       padding: calc(clamp(2rem, 6vh, 7rem) + env(safe-area-inset-top, 0px)) 1rem 2rem;
-      display:block;                 /* 중앙정렬(플렉스) 제거 */
-      min-height:auto;               /* 100vh 제거 */
+      display:block;
+      min-height:auto;
       text-align:center; box-sizing:border-box;
     }
-
-    /* 100svh 지원 브라우저에서 모바일 높이 안정화 (선택 보정) */
     @supports (height: 100svh){
-      @media (max-width: 768px){
-        body{ min-height:100svh; }
-      }
+      @media (max-width: 768px){ body{ min-height:100svh; } }
     }
 
     .container{max-width:680px; width:100%; margin:0 auto;}
@@ -49,7 +44,7 @@
     h1{font-size:2rem; margin:.6rem 0; font-weight:600}
     .subtitle{font-size:1rem; color:var(--accent-color); margin-bottom:1.5rem}
 
-    /* 탭 (메인과 동일) */
+    /* 탭 */
     a{color:var(--link-color); text-decoration:none}
     a:hover,a:focus{color:var(--link-hover); text-decoration:underline}
     .links{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-bottom:1.5rem}
@@ -66,13 +61,26 @@
     .card{border:1px solid var(--border-color); border-radius:8px; padding:1rem; margin-bottom:.8rem}
     .meta{color:var(--muted); font-size:.9rem; margin:.2rem 0 .4rem}
     ul{margin:.3rem 0 0 1.1rem}
+
+    /* ▼ 이미지가 카드 안에서만 보이게: 폭 제한 + 최대 높이 + 자르기 */
+    .course-figure{ margin:.6rem 0 .4rem; border-radius:8px; overflow:hidden; }
+    .course-img{
+      width:100%;              /* 카드 폭에 맞춤 */
+      height:auto;             /* 기본은 비율 유지 */
+      display:block;
+    }
+    /* 세로로 너무 긴 원본 보호: 필요하면 최대 높이 제한 + 크롭 */
+    .course-img.crop{
+      max-height:320px;        /* 원하는 높이로 조절(예: 280~360px) */
+      object-fit:cover;        /* 넘치는 부분은 보기 좋게 잘라냄 */
+    }
+
     footer{margin-top:1.8rem; font-size:.85rem; color:var(--muted)}
   </style>
 </head>
 <body>
   <main class="container">
     <h1>Teaching</h1>
-    </div>
 
     <!-- 상단 탭 -->
     <nav class="links" aria-label="Primary">
@@ -80,13 +88,11 @@
       <a href="Namyeon_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
       <a href="teaching.html">Teaching</a>
       <a href="research.html">Research</a>
-
       <a href="https://scholar.google.com/citations?user=e9AxEE4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
     </nav>
 
     <!-- Philosophy -->
     <section class="section" aria-labelledby="philosophy">
-
       <blockquote>
         “You teach me, I forget. You show me, I remember. You involve me, I understand.” — E.O. Wilson
       </blockquote>
@@ -101,65 +107,71 @@
     </section>
 
     <!-- Courses -->
-<section class="section" aria-labelledby="courses">
-  <h2 id="courses">Current (FL 25)</h2>
+    <section class="section" aria-labelledby="courses">
+      <h2 id="courses">Current (FL 25)</h2>
 
-  <div class="card">
-    <strong>Introduction to Public Relations (PRE 2200)</strong>
-    <div class="meta">Foundations, ethics, and trends in public relations</div>
-    <ul>
-      <li>Covers PR history, principles, theories, and career paths</li>
-      <li>Activities: news briefings, crisis simulations, career workshops</li>
-      <li>Group projects: <em>PR in the News</em> and <em>International PR campaigns</em></li>
-    </ul>
-  </div>
+      <div class="card">
+        <strong>Introduction to Public Relations (PRE 2200)</strong>
+        <div class="meta">Foundations, ethics, and trends in public relations</div>
+        <ul>
+          <li>Covers PR history, principles, theories, and career paths</li>
+          <li>Activities: news briefings, crisis simulations, career workshops</li>
+          <li>Group projects: <em>PR in the News</em> and <em>International PR campaigns</em></li>
+        </ul>
+      </div>
 
-  <div class="card">
-    <strong>Social Media for Public Relations (PRE 3600)</strong>
-    <div class="meta">Strategic social media in PR, advertising, and marketing</div>
-    <ul>
-      <li>Combines academic theory, case studies, and campaign design</li>
-      <li>Semester-long group project: brand analysis, social media audit, strategy creation, and sample content development</li>
-      <li>Trend analysis and influencer marketing discussions</li>
-    </ul>
-  </div>
+      <div class="card">
+        <strong>Social Media for Public Relations (PRE 3600)</strong>
+        <div class="meta">Strategic social media in PR, advertising, and marketing</div>
+        <ul>
+          <li>Combines academic theory, case studies, and campaign design</li>
+          <li>Semester-long group project: brand analysis, social media audit, strategy creation, and sample content development</li>
+          <li>Trend analysis and influencer marketing discussions</li>
+        </ul>
+      </div>
 
-  <div class="card">
-    <strong>Mass Communication Theory and Research (MCM 4360)</strong>
-    <div class="meta">Exploring major media theories and research methods</div>
-    <ul>
-      <li>Covers key theories such as agenda-setting, framing, and diffusion of innovations</li>
-      <li>Teaches both quantitative and qualitative methods, with attention to ethics in research</li>
-      <li>Includes hands-on projects, AI simulations, and a theory mapping assignment connecting concepts to real-world media issues</li>
-    </ul>
-  </div>
+      <div class="card">
+        <strong>Mass Communication Theory and Research (MCM 4360)</strong>
+        <div class="meta">Exploring major media theories and research methods</div>
+        <ul>
+          <li>Covers key theories such as agenda-setting, framing, and diffusion of innovations</li>
+          <li>Teaches both quantitative and qualitative methods, with attention to ethics in research</li>
+          <li>Includes hands-on projects, AI simulations, and a theory mapping assignment connecting concepts to real-world media issues</li>
+        </ul>
+      </div>
 
-  <h2 id="courses">Past</h2>
+      <h2>Past</h2>
 
- <div class="card">
-    <strong>Public Relations Case Studies (PRE 4090)</strong>
-    <div class="meta">Online course exploring real PR cases</div>
-    <ul>
-      <li>Students analyze situations, evaluate strategies, and propose solutions</li>
-      <li>Interactive discussion and feedback model for engagement</li>
-    </ul>
-  </div>
+      <div class="card">
+        <strong>Public Relations Case Studies (PRE 4090)</strong>
+        <div class="meta">Online course exploring real PR cases</div>
+        <ul>
+          <li>Students analyze situations, evaluate strategies, and propose solutions</li>
+          <li>Interactive discussion and feedback model for engagement</li>
+        </ul>
+      </div>
 
-  <div class="card">
-    <strong>Public Relations Campaigns (PRE 4600)</strong>
-    <div class="meta">Capstone: client-based professional PR campaigns</div>
+      <div class="card">
+        <strong>Public Relations Campaigns (PRE 4600)</strong>
+        <div class="meta">Capstone: client-based professional PR campaigns</div>
 
-    <figure> <img src="https://namyeonlee.github.io/img/capstone.png" alt="Students presenting a PR campaign for Hope Alive" class="course-img" loading="lazy"> 
-    <ul>
-      <li>Students work with real clients to research, design, and present campaigns</li>
-      <li><em>Recent project:</em> partnered with <strong>Hope Alive</strong>, a local nonprofit, to create a health communication campaign addressing substance use</li>
-      <li>Produced a professional plan book combining research, targeted strategies, and deliverables</li>
-    </ul>
-  </div>
-  
-</section>
+        <!-- ▼ 이미지가 카드 안에서만 보이도록 figure + class 적용 -->
+        <figure class="course-figure">
+          <img src="https://namyeonlee.github.io/img/capstone.png"
+               alt="Students presenting a PR campaign plan book for Hope Alive"
+               class="course-img crop" loading="lazy">
+        </figure>
+        <!-- ▲ 필요 없으면 'crop' 클래스를 빼면 전체 비율로 표시됨 -->
 
-    
+        <ul>
+          <li>Students work with real clients to research, design, and present campaigns</li>
+          <li><em>Recent project:</em> partnered with <strong>Hope Alive</strong>, a local nonprofit, to create a health communication campaign addressing substance use</li>
+          <li>Produced a professional plan book combining research, targeted strategies, and deliverables</li>
+        </ul>
+      </div>
+
+    </section>
+
     <footer>&copy; <span id="year"></span> Namyeon Lee</footer>
   </main>
 
